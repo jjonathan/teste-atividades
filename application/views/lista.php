@@ -49,7 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </td>
                                     <td><?= $atividade->situacao ? 'Ativo' : 'Inativo' ?></td>
                                 </tr>
-                            <?php endforeach; ?>
+                            <?php endforeach ?>
+                            <?php if (count($atividades) == 0): ?>
+                                <tr>
+                                    <td colspan="6" style="text-align: center">Nenhuma atividade cadastrada</td>
+                                </tr>
+                            <?php endif ?>
                         </tbody>
                     </table>
                 </div>
