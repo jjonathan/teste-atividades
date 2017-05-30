@@ -1,0 +1,32 @@
+{
+  "name": "gulp-example",
+  "version": "1.0.0",
+  "description": "My example of gulp, a default that I use",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjonathan/gulp-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjonathan/gulp-example/issues"
+  },
+  "homepage": "https://github.com/jjonathan/gulp-example#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "load-gulp-tasks": "^0.1.0",
+    "pump": "^1.0.2"
+  }
+}
