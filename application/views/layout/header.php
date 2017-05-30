@@ -1,5 +1,4 @@
 
-<?php echo base_url();exit; ?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -9,16 +8,16 @@
     <title>Teste-Atividades</title>
 
     <!-- Styles -->
-    <link href="<?= base_url('assets/css/style.min.js') ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/style.min.css') ?>" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <span class="navbar-brand" href="#">
                         Teste-Atividades
-                    </a>
+                    </span>
                 </div>
             </div>
         </nav>
