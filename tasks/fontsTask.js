@@ -6,6 +6,7 @@ module.exports = function(gulp, options, plugins){
 				options.paths.src.fonts,
             	{base: 'assets/'}
             ),
+            plugins.flatten(),
 			gulp.dest(options.paths.dist.fonts)
 			], cb);
 	});

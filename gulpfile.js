@@ -19,10 +19,12 @@ var options = {
 				'./assets/bower_components/bootstrap/dist/css/bootstrap.min.css',
 				'./assets/bower_components/datatables/media/css/jquery.dataTables.min.css',
 				'./assets/bower_components/select2/dist/css/select2.min.css',
+				'./assets/bower_components/font-awesome/css/font-awesome.min.css',
 				'./assets/src/css/*'
 			],
 			'fonts'	: [
 				'./assets/bower_components/bootstrap/fonts/*.{eot,svg,ttf,woff,woff2}',
+				'./assets/bower_components/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}',
 				'./assets/src/fonts/*'
 			],
 			'img' : [
