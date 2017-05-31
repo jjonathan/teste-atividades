@@ -7,6 +7,7 @@ module.exports = function(gulp, options, plugins){
             	{base: 'assets/'}
             ),
 			plugins.imagemin(),
+            plugins.flatten(),
 			gulp.dest(options.paths.dist.img)
 			],cb);
 	});

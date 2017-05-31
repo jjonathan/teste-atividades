@@ -11,8 +11,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="panel-heading">Lista de Atividades</div>
 
                 <div class="panel-body">
+                    <div class="row">
+
+                    </div>
+
+                    <div class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <select name="status" id="inputStatus" class="form-control" multiple="true">
+                                    <?php foreach($estados as $estado): ?>
+                                        <option value="<?= $estado->id ?>"><?= $estado->nome ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <label class="col-xs-4 col-sm-4 col-md-4 col-lg-4" for="inputSituacao">Situação:</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <select name="situacao" id="inputSituacao" class="form-control">
+                                        <option value="1">Ativos</option>
+                                        <option value="2">Inativos</option>
+                                        <option value="3" selected="true">Ambos</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="table">
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="listaTable">
                             <thead>
                                 <tr>
                                     <th class="text-center">Nome</th>
@@ -32,20 +58,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <td class="text-center"><?= $atividade->dt_fim ? date('d-m-Y', strtotime($atividade->dt_fim)) : '-' ?></td>
                                         <td class="text-center">
                                             <?php
-                                                switch ($atividade->status) {
-                                                    case 1:
-                                                        echo 'Pendente';
-                                                        break;
-                                                    case 2:
-                                                        echo 'Em Desenvolvimento';
-                                                        break;
-                                                    case 3:
-                                                        echo 'Em teste';
-                                                        break;
-                                                    default:
-                                                        echo 'Concluída';
-                                                        break;
-                                                }
+                                            switch ($atividade->status) {
+                                                case 1:
+                                                echo 'Pendente';
+                                                break;
+                                                case 2:
+                                                echo 'Em Desenvolvimento';
+                                                break;
+                                                case 3:
+                                                echo 'Em teste';
+                                                break;
+                                                default:
+                                                echo 'Concluída';
+                                                break;
+                                            }
                                             ?>
                                         </td>
                                         <td class="text-center"><?= $atividade->situacao ? 'Ativo' : 'Inativo' ?></td>
@@ -61,11 +87,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
-                                <?php if (count($atividades) == 0): ?>
-                                    <tr>
-                                        <td colspan="7" style="text-align: center">Nenhuma atividade cadastrada</td>
-                                    </tr>
-                                <?php endif ?>
                             </tbody>
                         </table>
                     </div>

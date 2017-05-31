@@ -6,23 +6,39 @@ class AtividadeController extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('AtividadeModel');
+		$this->load->model('StatusModel');
 	}
 
 	public function index()
 	{
-		$atividades = $this->AtividadeModel->getAll();
-
-		$dados['atividades'] = $atividades;
+		$dados['atividades'] = $this->AtividadeModel->getAll();
+		$dados['estados'] = $this->StatusModel->getAll();
 
 		$this->load->view('lista', $dados);
 	}
 
-	public function toObj($arr){
-		$object = new stdClass();
-		foreach ($array as $key => $value)
-		{
-		    $object->$key = $value;
+	public function lista(){
+		$retorno = [];
+		$retorno['status'] = 'error';
+		$retorno['message'] = 'Erro desconhecido';
+		$retorno['data'] = [];
+
+		$status   = isset($_GET['status']) ? $_GET['status'] : null;
+		$situacao = isset($_GET['situacao']) ? $_GET['situacao'] : null;
+
+		if (!$status && !$situacao) {
+			$retorno['status'] = 'ok';
+			$retorno['message'] = 'Tudo Ok!';
+			$retorno['data'] = $this->AtividadeModel->getAll();
+			return $this->toJson($retorno);
 		}
-		return $object;
+
+		return $this->toJson($retorno);
+	}
+
+	public function toJson($data){
+		header('Content-Type: application/json');
+		echo json_encode($data);
+		exit;
 	}
 }
