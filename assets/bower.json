@@ -19,6 +19,7 @@
     "bootstrap": "^3.3.7",
     "datatables": "DataTables#^1.10.15",
     "select2": "^4.0.3",
-    "font-awesome": "Font-Awesome#^4.7.0"
+    "font-awesome": "Font-Awesome#^4.7.0",
+    "toastr": "^2.1.3"
   }
 }
