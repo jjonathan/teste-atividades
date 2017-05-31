@@ -36,4 +36,22 @@ $(function(){
 		"bFilter": false,
 		"bDestroy" : true
 	});
+
+	$(".btn-detalhes").click(function(){
+		var loading_img = "<img class='text-center' src='" + base_url + "assets/images/loading.gif'>";
+		$("#modal-detalhes .modal-body").html(loading_img);
+		$("#modal-detalhes").modal('toggle');
+
+		var id = $(this).attr('data-id');
+
+		$.get(base_url + 'detalhes', { "id" : id }, function(response){
+			if (response.status == 'ok') {
+				$("#modal-detalhes .modal-body").html(response.data);
+				return;
+			}
+
+			toastrMessage('Ocorreu um erro ao realizar a solicitação: ' + response.message, 'error');
+			$("#modal-detalhes").modal('toggle');
+		});
+	});
 });
