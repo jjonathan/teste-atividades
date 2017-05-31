@@ -4,10 +4,10 @@ $(function(){
 		allowClear: true
 	});
 
-	atualizaLista();
+	listaEmDatatable();
 });
 
-function atualizaLista(){
+function listaEmDatatable(){
 	var status   = $("#inputStatus").select2('val');
 	var situacao = $("#inputSituacao").val();
 
@@ -56,6 +56,11 @@ function atualizaLista(){
 			{ "orderable": false, "targets": 6 }
 		],
 		"bLengthChange": false,
-		"bFilter": false
+		"bFilter": false,
+		"bDestroy" : true
 	});
+}
+
+function atualizaLista(){
+	$("#listaTable").ajax.reload();
 }

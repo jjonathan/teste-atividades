@@ -52,13 +52,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </thead>
                             <tbody>
                                 <?php foreach($atividades as $atividade): ?>
-                                    <tr class="<?= $atividade->status == 4 ? 'finalizada' : '' ?>">
+                                    <tr class="<?= $atividade->status_id == 4 ? 'finalizada' : '' ?>">
                                         <td class="text-center"><?= $atividade->nome ?></td>
                                         <td class="text-center"><?= date('d-m-Y', strtotime($atividade->dt_inicio)) ?></td>
                                         <td class="text-center"><?= $atividade->dt_fim ? date('d-m-Y', strtotime($atividade->dt_fim)) : '-' ?></td>
                                         <td class="text-center">
                                             <?php
-                                            switch ($atividade->status) {
+                                            switch ($atividade->status_id) {
                                                 case 1:
                                                 echo 'Pendente';
                                                 break;
