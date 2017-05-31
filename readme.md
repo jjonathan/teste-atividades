@@ -8,6 +8,7 @@
 - [PHP](https://secure.php.net/)
 - [Node](https://nodejs.org/en/)
 - [Gulp](http://gulpjs.com/)
+- [Bower](https://bower.io/)
 
 ## Passos
 
