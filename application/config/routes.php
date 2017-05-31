@@ -6,4 +6,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['lista'] = 'AtividadeController';
-$route['api/lista'] = 'AtividadeController/lista';
+$route['detalhes'] = 'AtividadeController/detalhes';
+$route['nova'] = 'AtividadeController/nova';
+$route['editar'] = 'AtividadeController/editar';

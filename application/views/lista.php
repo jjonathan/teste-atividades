@@ -64,31 +64,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <td class="text-center"><?= date('d-m-Y', strtotime($atividade->dt_inicio)) ?></td>
                                         <td class="text-center"><?= $atividade->dt_fim ? date('d-m-Y', strtotime($atividade->dt_fim)) : '-' ?></td>
                                         <td class="text-center">
-                                            <?php
-                                            switch ($atividade->status_id) {
-                                                case 1:
-                                                echo 'Pendente';
-                                                break;
-                                                case 2:
-                                                echo 'Em Desenvolvimento';
-                                                break;
-                                                case 3:
-                                                echo 'Em teste';
-                                                break;
-                                                default:
-                                                echo 'Concluída';
-                                                break;
-                                            }
-                                            ?>
+                                            <?= $atividade->status->nome ?>
                                         </td>
                                         <td class="text-center"><?= $atividade->situacao ? 'Ativo' : 'Inativo' ?></td>
                                         <td class="text-center">
-                                            <a type="button" class="btn btn-sm btn-success">
+                                            <a href="<?= base_url() . "editar?id=$atividade->id" ?>" type="button" class="btn btn-sm btn-success">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                         <td class="text-center">
-                                            <a type="button" class="btn btn-sm btn-info">
+                                            <a type="button" class="btn btn-sm btn-info btn-detalhes" data-id="<?= $atividade->id ?>">
                                                 <i class="fa fa-info" aria-hidden="true"></i>
                                             </a>
                                         </td>
@@ -99,10 +84,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <a type="button" class="btn btn-default pull-right">Nova Tarefa</a>
+                            <a href="<?= base_url('nova') ?>" type="button" class="btn btn-default pull-right">Nova Atividade</a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-detalhes">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Detalhes</h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>

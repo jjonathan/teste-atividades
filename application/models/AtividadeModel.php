@@ -2,6 +2,6 @@
 
 class AtividadeModel extends MY_Model {
 
-  var $table = 'atividades';
-
+	var $table = 'atividades';
+	
 }
