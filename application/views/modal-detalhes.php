@@ -10,11 +10,11 @@
 		</tr>
 		<tr>
 			<th>Data Inicio</th>
-			<td><?= date('d-m-Y', strtotime($atividade->dt_inicio)) ?></td>
+			<td><?= date('d/m/Y', strtotime($atividade->dt_inicio)) ?></td>
 		</tr>
 		<tr>
 			<th>Data Fim</th>
-			<td><?= $atividade->dt_fim ? date('d-m-Y', strtotime($atividade->dt_fim)) : '' ?></td>
+			<td><?= $atividade->dt_fim ? date('d/m/Y', strtotime($atividade->dt_fim)) : '' ?></td>
 		</tr>
 		<tr>
 			<th>Status</th>
