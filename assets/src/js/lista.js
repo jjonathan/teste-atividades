@@ -4,30 +4,7 @@ $(function(){
 		allowClear: true
 	});
 
-	listaEmDatatable();
-});
-
-function listaEmDatatable(){
-	var status   = $("#inputStatus").select2('val');
-	var situacao = $("#inputSituacao").val();
-
-	var urlAjax = base_url + 'api/lista';
-
-	if (status || situacao) {
-		urlAjax += '?';
-
-		if (status) {
-			urlAjax += 'status=' + status;
-		}
-
-		if (situacao) {
-			urlAjax += (status) ? '&' : '';
-			urlAjax += 'situacao=' + situacao;
-		}
-	}
-
 	$("#listaTable").DataTable({
-		"ajax" : urlAjax,
 		"language": {
 			"emptyTable": "Nenhum registro encontrado",
 			"info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -59,8 +36,4 @@ function listaEmDatatable(){
 		"bFilter": false,
 		"bDestroy" : true
 	});
-}
-
-function atualizaLista(){
-	$("#listaTable").ajax.reload();
-}
+});

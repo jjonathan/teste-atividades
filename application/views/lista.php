@@ -15,28 +15,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     </div>
 
-                    <div class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <select name="status" id="inputStatus" class="form-control" multiple="true">
-                                    <?php foreach($estados as $estado): ?>
-                                        <option value="<?= $estado->id ?>"><?= $estado->nome ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <label class="col-xs-4 col-sm-4 col-md-4 col-lg-4" for="inputSituacao">Situação:</label>
-                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                    <select name="situacao" id="inputSituacao" class="form-control">
-                                        <option value="1">Ativos</option>
-                                        <option value="2">Inativos</option>
-                                        <option value="3" selected="true">Ambos</option>
+                    <form action="<?= base_url('') ?>" method="GET" class="form-horizontal" role="form">
+                    
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <select name="status[]" id="inputStatus" class="form-control" multiple="true">
+                                        <?php foreach($estados as $estado): ?>
+                                            <option value="<?= $estado->id ?>" <?= $selectedStatus && in_array($estado->id, $selectedStatus) ? 'selected' : '' ?>><?= $estado->nome ?></option>
+                                        <?php endforeach ?>
                                     </select>
                                 </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                    <label class="col-xs-4 col-sm-4 col-md-4 col-lg-4" for="inputSituacao">Situação:</label>
+                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                        <select name="situacao" id="inputSituacao" class="form-control">
+                                            <option value="1" <?= $selectedSituacao && $selectedSituacao == 1 ? 'selected' : '' ?>>Ativos</option>
+                                            <option value="2" <?= $selectedSituacao && $selectedSituacao == 2 ? 'selected' : '' ?>>Inativos</option>
+                                            <option value="3" <?= $selectedSituacao ?  $selectedSituacao == 3 ? 'selected' : '' : 'selected="true"' ?> >Ambos</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                    </form>
                     <div class="table">
                         <table class="table table-hover" id="listaTable">
                             <thead>
@@ -46,8 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th class="text-center">Data Fim</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Situação</th>
-                                    <th class="text-center">Editar</th>
-                                    <th class="text-center">Detalhes</th>
+                                    <th class="text-center" width="10%">Editar</th>
+                                    <th class="text-center" width="10%">Detalhes</th>
                                 </tr>
                             </thead>
                             <tbody>

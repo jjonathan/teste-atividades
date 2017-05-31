@@ -75,6 +75,37 @@ class MY_Model extends CI_Model {
           return $this->db->update($this->table, $dados);
      }
 
+     function where(array $arrWhere = null){
+          if(is_null($arrWhere))
+               return false;
+
+          foreach ($arrWhere as $key => $value) {
+               $this->db->where($key, $value);
+          }
+          $query = $this->db->get($this->table);
+
+          if ($query->num_rows() > 0) {
+               return $query->result();
+          } else {
+               return null;
+          }
+     }
+
+     function whereIn(array $arrWhereIn = null){
+          if(is_null($arrWhereIn))
+               return false;
+
+          foreach ($arrWhereIn as $key => $value) {
+               $this->db->where_in($key, $value);
+          }
+          $query = $this->db->get($this->table);
+
+          if ($query->num_rows() > 0) {
+               return $query->result();
+          } else {
+               return null;
+          }
+     }
 }
 
 /* End of file */
