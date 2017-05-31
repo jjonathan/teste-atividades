@@ -60,16 +60,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <tbody>
                                 <?php foreach($atividades as $atividade): ?>
                                     <tr class="<?= $atividade->status_id == 4 ? 'finalizada' : '' ?>">
-                                        <td class="text-center"><?= $atividade->nome ?></td>
-                                        <td class="text-center"><?= date('d-m-Y', strtotime($atividade->dt_inicio)) ?></td>
-                                        <td class="text-center"><?= $atividade->dt_fim ? date('d-m-Y', strtotime($atividade->dt_fim)) : '-' ?></td>
+                                        <td class="text-center"><?= strlen($atividade->nome) > 30 ? substr($atividade->nome, 0, 27) . '...' : $atividade->nome ?></td>
+                                        <td class="text-center"><?= date('d/m/Y', strtotime($atividade->dt_inicio)) ?></td>
+                                        <td class="text-center"><?= $atividade->dt_fim ? date('d/m/Y', strtotime($atividade->dt_fim)) : '' ?></td>
                                         <td class="text-center">
                                             <?= $atividade->status->nome ?>
                                         </td>
                                         <td class="text-center"><?= $atividade->situacao ? 'Ativo' : 'Inativo' ?></td>
                                         <td class="text-center">
-                                            <a href="<?= base_url() . "editar?id=$atividade->id" ?>" type="button" class="btn btn-sm btn-success">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            <a href="<?= $atividade->status_id != 4 ? base_url() . "editar?id=$atividade->id" : '#' ?>" type="button" class="btn btn-sm btn-success" <?= $atividade->status_id == 4 ? 'disabled' : '' ?>>
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
                                             </a>
                                         </td>
                                         <td class="text-center">

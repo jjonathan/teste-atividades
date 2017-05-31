@@ -29,8 +29,10 @@ $(function(){
 			}
 		},
 		"columnDefs": [
-			{ "orderable": false, "targets": 5 },
-			{ "orderable": false, "targets": 6 }
+		{ "orderable": false, "targets": 5 },
+		{ "orderable": false, "targets": 6 },
+		{ "type": 'date-br', "targets" : 1 },
+		{ "type": 'date-br', "targets" : 2 }
 		],
 		"bLengthChange": false,
 		"bFilter": false,
@@ -54,4 +56,21 @@ $(function(){
 			$("#modal-detalhes").modal('toggle');
 		});
 	});
+	$.extend( $.fn.dataTableExt.oSort, {
+		"date-br-pre": function ( a ) {
+			if (a == null || a == "") {
+				return 0;
+			}
+			var brDatea = a.split('/');
+			return (brDatea[2] + brDatea[1] + brDatea[0]) * 1;
+		},
+
+		"date-br-asc": function ( a, b ) {
+			return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+		},
+
+		"date-br-desc": function ( a, b ) {
+			return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+		}
+	} );
 });

@@ -152,6 +152,14 @@ class AtividadeController extends CI_Controller {
 	}
 
 	public function saveAtividade($atividade_id, $dados){
+
+		if ($atividade_id) {
+			$atividade = $this->AtividadeModel->getById($atividade_id);
+			if (!isset($atividade[0]) || $atividade[0]->status_id == 4) {
+				return redirect('/lista');
+			}
+		}
+
 		if (isset($dados['atividade_id'])) {
 			unset($dados['atividade_id']);
 		}
